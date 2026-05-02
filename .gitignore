@@ -1,0 +1,44 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*.pyc
+
+# Virtual environment
+.venv/
+venv/
+ENV/
+
+# Database files
+*.sqlite
+*.sqlite3
+
+# Logs
+*.log
+
+# Environment variables
+.env
+.env.*
+
+# IDE / editor
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Claw artifacts
+.claw/
+.clawd*
+.claw.json
+
+# pytest
+.pytest_cache/
+
+# Distribution / packaging
+dist/
+build/
+*.egg-info/
