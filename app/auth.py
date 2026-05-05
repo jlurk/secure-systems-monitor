@@ -1,5 +1,6 @@
 """Authentication utilities – JWT tokens, password hashing, RBAC dependencies."""
 
+import os
 from datetime import datetime, timedelta, timezone
 from typing import Annotated
 
@@ -11,10 +12,10 @@ from passlib.context import CryptContext
 from app.models import UserInDB, UserRole
 
 # ── Configuration ───────────────────────────────────────────────
-# In production these MUST come from environment variables / a vault.
-SECRET_KEY = "a3f8b2c1d4e5f6a7b8c9d0e1f2a3b4c5d6e7f8a9b0c1d2e3f4a5b6c7d8e9f0"
-ALGORITHM = "HS256"
-ACCESS_TOKEN_EXPIRE_MINUTES = 30
+# In production, SECRET_KEY must be provided through an environment variable.
+SECRET_KEY = os.getenv("SECRET_KEY", "dev-only-change-me")
+ALGORITHM = os.getenv("JWT_ALGORITHM", "HS256")
+ACCESS_TOKEN_EXPIRE_MINUTES = int(os.getenv("ACCESS_TOKEN_EXPIRE_MINUTES", "30"))
 
 # ── Password hashing ───────────────────────────────────────────
 pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
